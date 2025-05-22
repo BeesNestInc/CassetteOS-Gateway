@@ -1,6 +1,6 @@
-# CasaOS-Gateway
+# CassetteOS-Gateway
 
-CasaOS Gateway is a dynamic API gateway service that can be used to expose APIs from different other HTTP based services.
+CassetteOS Gateway is a dynamic API gateway service that can be used to expose APIs from different other HTTP based services.
 
 This gateway service comes with a simple management API for other services to register their APIs by route paths. A HTTP request arrived at gateway port will be forwarded to the service that is registered for the route path.
 
