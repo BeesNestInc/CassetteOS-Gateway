@@ -9,11 +9,11 @@ import (
 	"os"
 	"testing"
 
-	"github.com/IceWhaleTech/CasaOS-Common/utils/logger"
+	"github.com/BeesNestInc/CassetteOS-Common/utils/logger"
 	"github.com/labstack/echo/v4"
 
-	"github.com/IceWhaleTech/CasaOS-Common/model"
-	"github.com/IceWhaleTech/CasaOS-Gateway/service"
+	"github.com/BeesNestInc/CassetteOS-Common/model"
+	"github.com/BeesNestInc/CassetteOS-Gateway/service"
 	"gotest.tools/v3/assert"
 )
 
