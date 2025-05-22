@@ -1,7 +1,5 @@
 # CasaOS-Gateway
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/BeesNestInc/CassetteOS-Gateway.svg)](https://pkg.go.dev/github.com/BeesNestInc/CassetteOS-Gateway) [![Go Report Card](https://goreportcard.com/badge/github.com/BeesNestInc/CassetteOS-Gateway)](https://goreportcard.com/report/github.com/BeesNestInc/CassetteOS-Gateway) [![goreleaser](https://github.com/BeesNestInc/CassetteOS-Gateway/actions/workflows/release.yml/badge.svg)](https://github.com/BeesNestInc/CassetteOS-Gateway/actions/workflows/release.yml) [![codecov](https://codecov.io/gh/IceWhaleTech/CasaOS-Gateway/branch/main/graph/badge.svg?token=5JIHXF1RJ4)](https://codecov.io/gh/IceWhaleTech/CasaOS-Gateway)
-
 CasaOS Gateway is a dynamic API gateway service that can be used to expose APIs from different other HTTP based services.
 
 This gateway service comes with a simple management API for other services to register their APIs by route paths. A HTTP request arrived at gateway port will be forwarded to the service that is registered for the route path.
