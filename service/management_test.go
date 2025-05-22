@@ -6,8 +6,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/IceWhaleTech/CasaOS-Common/model"
-	"github.com/IceWhaleTech/CasaOS-Common/utils/logger"
+	"github.com/BeesNestInc/CassetteOS-Common/model"
+	"github.com/BeesNestInc/CassetteOS-Common/utils/logger"
 	"gotest.tools/assert"
 )
 
