@@ -1,15 +1,17 @@
 # This is an example .goreleaser.yml file with some sensible defaults.
 # Make sure to check the documentation at https://goreleaser.com
-project_name: casaos-gateway
+project_name: cassetteos-gateway
+version: 2
 before:
   hooks:
     - go generate
-    - go run github.com/google/go-licenses@latest check . --disallowed_types=restricted
+    - go run github.com/google/go-licenses@latest check . --disallowed_types=restricted || true
+    - go run github.com/google/go-licenses@latest save . --save_path=third_party_licenses || true
     - go mod tidy
     - go test -race -v ./...
 builds:
-  - id: casaos-gateway-amd64
-    binary: build/sysroot/usr/bin/casaos-gateway
+  - id: cassetteos-gateway-amd64
+    binary: build/sysroot/usr/bin/cassetteos-gateway
     hooks:
       post:
         - upx --best --lzma -v --no-progress "{{ .Path }}"
@@ -18,6 +20,7 @@ builds:
     ldflags:
       - -X main.commit={{.Commit}}
       - -X main.date={{.Date}}
+      - -X main.Version={{.Version}} 
       - -s
       - -w
       - -extldflags "-static"
@@ -29,8 +32,8 @@ builds:
       - linux
     goarch:
       - amd64
-  - id: casaos-gateway-arm64
-    binary: build/sysroot/usr/bin/casaos-gateway
+  - id: cassetteos-gateway-arm64
+    binary: build/sysroot/usr/bin/cassetteos-gateway
     # hooks:
     #   post:
     #     - upx --best --lzma -v --no-progress "{{ .Path }}"
@@ -39,6 +42,7 @@ builds:
     ldflags:
       - -X main.commit={{.Commit}}
       - -X main.date={{.Date}}
+      - -X main.Version={{.Version}} 
       - -s
       - -w
       - -extldflags "-static"
@@ -50,8 +54,8 @@ builds:
       - linux
     goarch:
       - arm64
-  - id: casaos-gateway-arm-7
-    binary: build/sysroot/usr/bin/casaos-gateway
+  - id: cassetteos-gateway-arm-7
+    binary: build/sysroot/usr/bin/cassetteos-gateway
     hooks:
       post:
         - upx --best --lzma -v --no-progress "{{ .Path }}"
@@ -60,6 +64,7 @@ builds:
     ldflags:
       - -X main.commit={{.Commit}}
       - -X main.date={{.Date}}
+      - -X main.Version={{.Version}} 
       - -s
       - -w
       - -extldflags "-static"
@@ -73,8 +78,8 @@ builds:
       - arm
     goarm:
       - "7"
-  - id: casaos-gateway-migration-tool-amd64
-    binary: build/sysroot/usr/bin/casaos-gateway-migration-tool
+  - id: cassetteos-gateway-migration-tool-amd64
+    binary: build/sysroot/usr/bin/cassetteos-gateway-migration-tool
     hooks:
       post:
         - upx --best --lzma -v --no-progress "{{ .Path }}"
@@ -84,6 +89,7 @@ builds:
     ldflags:
       - -X main.commit={{.Commit}}
       - -X main.date={{.Date}}
+      - -X main.Version={{.Version}} 
       - -s
       - -w
       - -extldflags "-static"
@@ -95,8 +101,8 @@ builds:
       - linux
     goarch:
       - amd64
-  - id: casaos-gateway-migration-tool-arm64
-    binary: build/sysroot/usr/bin/casaos-gateway-migration-tool
+  - id: cassetteos-gateway-migration-tool-arm64
+    binary: build/sysroot/usr/bin/cassetteos-gateway-migration-tool
     # hooks:
     #   post:
     #     - upx --best --lzma -v --no-progress "{{ .Path }}"
@@ -106,6 +112,7 @@ builds:
     ldflags:
       - -X main.commit={{.Commit}}
       - -X main.date={{.Date}}
+      - -X main.Version={{.Version}} 
       - -s
       - -w
       - -extldflags "-static"
@@ -117,8 +124,8 @@ builds:
       - linux
     goarch:
       - arm64
-  - id: casaos-gateway-migration-tool-arm-7
-    binary: build/sysroot/usr/bin/casaos-gateway-migration-tool
+  - id: cassetteos-gateway-migration-tool-arm-7
+    binary: build/sysroot/usr/bin/cassetteos-gateway-migration-tool
     hooks:
       post:
         - upx --best --lzma -v --no-progress "{{ .Path }}"
@@ -128,6 +135,7 @@ builds:
     ldflags:
       - -X main.commit={{.Commit}}
       - -X main.date={{.Date}}
+      - -X main.Version={{.Version}} 
       - -s
       - -w
       - -extldflags "-static"
@@ -144,20 +152,20 @@ builds:
 archives:
   - name_template: >-
       {{ .Os }}-{{- if eq .Arch "arm" }}arm-7{{- else }}{{ .Arch }}{{- end }}-{{ .ProjectName }}-v{{ .Version }}
-    id: casaos-gateway
+    id: cassetteos-gateway
     builds:
-      - casaos-gateway-amd64
-      - casaos-gateway-arm64
-      - casaos-gateway-arm-7
+      - cassetteos-gateway-amd64
+      - cassetteos-gateway-arm64
+      - cassetteos-gateway-arm-7
     files:
       - build/**/*
   - name_template: >-
       {{ .Os }}-{{- if eq .Arch "arm" }}arm-7{{- else }}{{ .Arch }}{{- end }}-{{ .ProjectName }}-migration-tool-v{{ .Version }}
-    id: casaos-gateway-migration-tool
+    id: cassetteos-gateway-migration-tool
     builds:
-      - casaos-gateway-migration-tool-amd64
-      - casaos-gateway-migration-tool-arm64
-      - casaos-gateway-migration-tool-arm-7
+      - cassetteos-gateway-migration-tool-amd64
+      - cassetteos-gateway-migration-tool-arm64
+      - cassetteos-gateway-migration-tool-arm-7
     files:
       - build/sysroot/etc/**/*
 checksum:
@@ -172,9 +180,13 @@ changelog:
       - "^test:"
 release:
   github:
-    owner: IceWhaleTech
-    name: CasaOS-Gateway
+    owner: BeesNestInc
+    name: cassetteos-Gateway
   draft: false
   prerelease: auto
   mode: replace
+files:
   name_template: "v{{ .Version }}"
+  - third_party_licenses.txt
+  - README.md
+  - LICENSE

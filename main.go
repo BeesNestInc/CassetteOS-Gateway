@@ -42,8 +42,11 @@ var (
 
 	ErrCheckURLNotOK = errors.New("check url did not return 200 OK")
 
-	//go:embed build/sysroot/etc/casaos/gateway.ini.sample
+	//go:embed build/sysroot/etc/cassetteos/gateway.ini.sample
 	_confSample string
+	Version string
+	Commit  string
+	Date    string
 )
 
 func init() {
@@ -53,6 +56,9 @@ func init() {
 
 	if *versionFlag {
 		fmt.Printf("v%s\n", common.Version)
+		fmt.Printf("Version: %s\n", Version)
+		fmt.Printf("Commit:  %s\n", Commit)
+		fmt.Printf("Date:    %s\n", Date)
 		os.Exit(0)
 	}
 
