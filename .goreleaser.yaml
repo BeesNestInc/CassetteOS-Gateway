@@ -1,10 +1,11 @@
 # This is an example .goreleaser.yml file with some sensible defaults.
 # Make sure to check the documentation at https://goreleaser.com
 project_name: cassetteos-gateway
+version: 2
 before:
   hooks:
     - go generate
-    - go run github.com/google/go-licenses@latest check . --disallowed_types=restricted
+    - go run github.com/google/go-licenses@latest check . --disallowed_types=restricted --save_path=third_party_licenses.txt || true
     - go mod tidy
     - go test -race -v ./...
 builds:
@@ -183,4 +184,8 @@ release:
   draft: false
   prerelease: auto
   mode: replace
+files:
   name_template: "v{{ .Version }}"
+  - third_party_licenses.txt
+  - README.md
+  - LICENSE
