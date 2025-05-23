@@ -13,21 +13,21 @@ Upon launching, it will search for `gateway.ini` file in the following order:
 ```bash
 ./gateway.ini
 ./conf/gateway.ini
-$HOME/.casaos/gateway.ini
-/etc/casaos/gateway.ini
+$HOME/.casetteos/gateway.ini
+/etc/cassetteos/gateway.ini
 ```
 
-See [gateway.ini.sample](./build/etc/casaos/gateway.ini.sample) for default configuration.
+See [gateway.ini.sample](./build/etc/cassetteos/gateway.ini.sample) for default configuration.
 
 ## Running
 
 Once running, gateway address and management address will be available in the files under `RuntimePath`  specified in configuration.
 
 ```bash
-$ cat /var/run/casaos/gateway.url 
+$ cat /var/run/cassetteos/gateway.url 
 [::]:8080 # port is specified in configuration
 
-$ cat /var/run/casaos/management.url 
+$ cat /var/run/cassetteos/management.url 
 [::]:34703 # port is randomly assigned
 ```
 
