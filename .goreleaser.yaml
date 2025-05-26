@@ -4,6 +4,7 @@ project_name: cassetteos-gateway
 version: 2
 before:
   hooks:
+    - rm -rf third_party_licenses
     - go generate
     - go run github.com/google/go-licenses@latest check . --disallowed_types=restricted || true
     - go run github.com/google/go-licenses@latest save . --save_path=third_party_licenses || true
@@ -159,6 +160,9 @@ archives:
       - cassetteos-gateway-arm-7
     files:
       - build/**/*
+      - README.md
+      - LICENSE
+      - third_party_licenses
   - name_template: >-
       {{ .Os }}-{{- if eq .Arch "arm" }}arm-7{{- else }}{{ .Arch }}{{- end }}-{{ .ProjectName }}-migration-tool-v{{ .Version }}
     id: cassetteos-gateway-migration-tool
@@ -168,6 +172,9 @@ archives:
       - cassetteos-gateway-migration-tool-arm-7
     files:
       - build/sysroot/etc/**/*
+      - README.md
+      - LICENSE
+      - third_party_licenses
 checksum:
   name_template: "checksums.txt"
 snapshot:
@@ -185,7 +192,4 @@ release:
   draft: false
   prerelease: auto
   mode: replace
-files:
-  - src: third_party_licenses.txt
-  - src: README.md
-  - src: LICENSE
+  name_template: "v{{ .Version }}"
