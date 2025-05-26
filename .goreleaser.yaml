@@ -186,7 +186,6 @@ release:
   prerelease: auto
   mode: replace
 files:
-  name_template: "v{{ .Version }}"
-  - third_party_licenses.txt
-  - README.md
-  - LICENSE
+  - src: third_party_licenses.txt
+  - src: README.md
+  - src: LICENSE
