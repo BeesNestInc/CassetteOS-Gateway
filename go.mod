@@ -1,8 +1,6 @@
 module github.com/BeesNestInc/CassetteOS-Gateway
 
-go 1.21
-
-toolchain go1.22.12
+go 1.20
 
 require (
 	github.com/BeesNestInc/CassetteOS-Common v0.4.15-alpha1-cs1.1.0
