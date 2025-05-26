@@ -6,7 +6,6 @@ before:
   hooks:
     - rm -rf third_party_licenses
     - go generate
-    - go run github.com/google/go-licenses@latest check . --disallowed_types=restricted || true
     - go run github.com/google/go-licenses@latest save . --save_path=third_party_licenses || true
     - go mod tidy
     - go test -race -v ./...
