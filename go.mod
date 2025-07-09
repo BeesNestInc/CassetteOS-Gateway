@@ -1,9 +1,11 @@
 module github.com/BeesNestInc/CassetteOS-Gateway
 
-go 1.20
+go 1.21
+
+toolchain go1.21.7
 
 require (
-	github.com/BeesNestInc/CassetteOS-Common v0.4.15-alpha1-cs1.1.2
+	github.com/BeesNestInc/CassetteOS-Common v0.0.1
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/spf13/viper v1.18.2
 	go.uber.org/fx v1.20.1
