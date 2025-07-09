@@ -1,0 +1,13 @@
+[Unit]
+After=network.target
+Description=CassetteOS Gateway
+
+[Service]
+ExecStartPre=/usr/bin/cassetteos-gateway -v
+ExecStart=/usr/bin/cassetteos-gateway
+PIDFile=/var/run/cassetteos/gateway.pid
+Restart=always
+Type=notify
+
+[Install]
+WantedBy=multi-user.target
