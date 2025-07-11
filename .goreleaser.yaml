@@ -188,7 +188,6 @@ release:
   github:
     owner: BeesNestInc
     name: cassetteos-Gateway
-  draft: false
   prerelease: auto
   mode: replace
   name_template: "v{{ .Version }}"
