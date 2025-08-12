@@ -5,7 +5,7 @@ go 1.21
 toolchain go1.21.7
 
 require (
-	github.com/BeesNestInc/CassetteOS-Common v0.0.7
+	github.com/BeesNestInc/CassetteOS-Common v0.0.8
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/spf13/viper v1.18.2
 	go.uber.org/fx v1.20.1
